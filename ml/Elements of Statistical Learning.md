@@ -28,7 +28,7 @@
 ## 2.7: Structured Regression Models
 - Nearest-neighbor and other local methods focus on direct estimation at a point  but face problems in high dimensions
 ### 2.7.1: Difficulty of the Problem
-- Consider $$\text{RSS}(f) = \sum_{i=1} ^N (y_i - f(x_i))^2$$minimizing this leads to infinitely many solutions, snice any $\hat{f}$ passing through all $(x_i, y_i)$ is a solution
+- Consider $$\text{RSS}(f) = \sum_{i=1} ^N (y_i - f(x_i))^2$$minimizing this leads to infinitely many solutions, since any $\hat{f}$ passing through all $(x_i, y_i)$ is a solution
 - 
   
   
