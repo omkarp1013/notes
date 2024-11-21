@@ -15,4 +15,4 @@
   $$P(X_n = j) = \sum_i q(i) p^n(i, j)$$
   - In other words, we multiply the transition matrix on the left by the vector $q$ of initial probabilities; if there are $k$ states, $p^n(x, y)$ is a $k \times k$ matrix
 	  - $q$ is therefore a $1 \times k$ matrix or a "row vector"
-  - 
+  - test
