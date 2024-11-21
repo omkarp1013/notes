@@ -65,4 +65,16 @@ i only started taking notes on Obsidian at this point :P
 
 ### 2.8.3: Basis Functions and Dictionary Methods
 - $f$ is a linear expansion of basis functions: $$f_{\theta}(x) = \sum_{m=1} ^M \theta_m h_m(x)$$
+- Neural network example: $$f_{\theta}(x) = \sum_{m=1} ^M \beta_m \sigma(\alpha_m ^T x + b_m)$$
+- Adaptively chosen basis function methods are known as **dictionary** methods (one has available a possibly infinite set or dictionary $D$ of candidate basis functions from where to choose)
+
+## 2.9 Model Selection and Bias-Variance Tradeoff
+- Models we will discuss have a *smoothing* or *complexity* parameter:
+	- Multiplier of penalty term
+	- Width of kernel
+	- Number of basis functions
+- **Bias-variance tradeoff**: as *model complexity* of our procedure is increased, variance tends to increase and squared bias tends to decrease (opposite happens when model complexity decreases)
+	- For $k$-nearest neighbors, model complexity is controlled by $k$
+- Training error is not a good estimate of test error, as it does not account for model complexity
+	- Should not use training error to choose model complexity to ultimately minimize test error
 - 
