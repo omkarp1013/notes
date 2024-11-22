@@ -73,7 +73,35 @@ i only started taking notes on Obsidian at this point :P
 	- Multiplier of penalty term
 	- Width of kernel
 	- Number of basis functions
+- **Example**: $k$-nearest neighbors: 
+  $$\begin{align*}
+	  \text{EPE}_k(x_0) &= \mathbb{E}[(Y-\hat{f}_k(x_0))^2|X = x_0] \\
+	  &= \sigma^2 + [\text{Bias}^2(\hat{f}_k(x_0)) + \text{Var}_{\mathcal{T}}(\hat{f}_k (x_0))] \\
+	  &= \sigma^2 + \left[f(x_0) - \frac 1k \sum_{l=1} ^k f(x_{(l)})\right]^2 + \frac{\sigma^2}{k}
+  \end{align*}$$ $$$$
+	- $\sigma^2$ is the *irreducible error* (variance of new test target)
+	- Second/third terms make up the MSE of $\hat{f}_k (x_0)$ in estimating $f(x_0)$ (broken down into a bias and variance component)
 - **Bias-variance tradeoff**: as *model complexity* of our procedure is increased, variance tends to increase and squared bias tends to decrease (opposite happens when model complexity decreases)
 	- For $k$-nearest neighbors, model complexity is controlled by $k$
 - Training error is not a good estimate of test error, as it does not account for model complexity
 	- Should not use training error to choose model complexity to ultimately minimize test error
+
+## Chapter 3: Linear Methods for Regression
+
+### 3.1: Introduction
+- Linear regression model assumes regression function $\mathbb{E}(Y|X)$ is linear in inputs $X_1, \ldots, X_p$
+	- Linear models are simple and often effective at describing data
+
+### 3.2: Linear Regression Models and Least Squares
+- Consider an input $X^T = (X_1, \ldots, x_2, \ldots, X_p)$; we want to predict output $Y$
+	- Linear regression model has the form $$f(X) = \beta_0 + \sum_{j=1} ^p X_j \beta_j$$
+	- Assumes $\mathbb{E}(Y|X)$ is linear or that the linear model is a reasonable approximation; $\beta_j$ terms are unknown parameters
+- Most popular estimation method: **least squares**
+	- Coefficients $\beta = (\beta_0, \beta_1, \ldots, \beta_p)^T$ are chosen to minimize residual sum of squares $$
+		  \begin{align*}
+			  \text{RSS}(\beta) &=  \sum_{i=1} ^n (y_i - f(x_i))^2 \\
+			  &= \sum_{i=1}^n \left(y_i - \beta_0 \sum_{j=1} ^p x_{ij} \beta_j \right)^2
+		  \end{align*}
+	  $$
+
+- 
