@@ -77,4 +77,3 @@ i only started taking notes on Obsidian at this point :P
 	- For $k$-nearest neighbors, model complexity is controlled by $k$
 - Training error is not a good estimate of test error, as it does not account for model complexity
 	- Should not use training error to choose model complexity to ultimately minimize test error
-- 
