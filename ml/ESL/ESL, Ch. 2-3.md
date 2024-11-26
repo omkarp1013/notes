@@ -104,4 +104,23 @@ i only started taking notes on Obsidian at this point :P
 		  \end{align*}
 	  $$
 
-- 
+	- If $\textbf{X}$ is an $N \times (p+1)$ matrix with each row an input vector (with a $1$ in the first position) and $\textbf{y}$ is the $N$-vector of outputs, we have $$\text{RSS}(\beta) = (\textbf{y} - \textbf{X}\beta)^T(\textbf{y} - \textbf{X}\beta)$$
+	- Taking first and second partial derivatives WRT $\beta$ and setting the first derivative equal to zero gives $$\hat{\beta} = (\textbf{X}^T\textbf{X})^{-1} \textbf{X}^T \textbf{y}$$
+	- Predicted values are given by $\hat{f}(x_0) = (1 : x_0)^T \hat{\beta}$; the fitted values at each of the training inputs are $$\hat{y} = \textbf{X}\hat{\beta} = \textbf{X}(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\textbf{y}$$
+	  where $\hat{y}_i = \hat{f}(x_i)$
+	  - If columns of $\textbf{X}$ are not linearly independent/it is not of full rank, $\textbf{X}^T\textbf{X}$ is singular and least squares coefficients $\hat{\beta}$ are not uniquely defined
+		  - Solution to non-unique representation: drop redundant columns in $\textbf{X}$
+  - **Assumptions**: $y_i$'s are uncorrelated, have constant variance $\sigma^2$, and $x_i$ are fixed (non-random) $$\text{Var}(\hat{\beta}) = (\textbf{X}^T\textbf{X})^{-1}\sigma^2$$
+- Estimate variance by $$\hat{\sigma}^2 = \frac{1}{N-p-1} \sum_{i=1} ^N (y_i - \hat{y}_i)^2$$
+	- $N-p-1$ makes $\hat{\sigma}^2$ an **unbiased** estimate of $\sigma^2$, e.g. $\mathbb{E}(\hat{\sigma}^2) = \sigma^2$
+- We now assume the model we provided above is the mean, e.g. $$Y = \mathbb{E}(Y|X_1, \ldots, X_p) + \epsilon = \beta_0 + \sum_{j=1} ^p X_j \beta_j + \epsilon$$
+  where $\epsilon \sim N(0, \sigma^2)$
+
+- With this, we can show $$\hat{\beta} \sim N(\beta, (\textbf{X}^T\textbf{X})^{-1}\sigma^2)$$
+- To test hypothesis that a particular $\beta_j = 0$, we use the **Z-score** $$z_j = \frac{\hat{\beta_j}}{\hat{\sigma}\sqrt{v_j}}$$
+  where $v_j$ is the $j$th diagonal element of $(\textbf{X}^T\textbf{X})^{-1}$
+
+- We often need to test for significance of groups of coefficients simultaneously; can use the $F$ statistic for this: $$F = \frac{(\text{RSS}_0 - \text{RSS}_1)/(p_1 - p_0)}{\text{RSS}_1 / (N-p_1-1)}$$
+	- $\text{RSS}_1$ is the residual sum-of-squares for the least squares fit of bigger model with $p1+ 1$ parameters
+	- $\text{RSS}_0$ is the residual sum-of-squares for the least squares fit of smaller model with $p_0 +1$ parameters (having $p_1 - p_0$ parameters constrained to zero)
+- Null
